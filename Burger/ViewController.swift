@@ -46,6 +46,11 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         title = "Food Shop"
         view.addSubview(orderButton)
+        view.addSubview(collectionView)
+        
+        collectionView.register(SalesCollectionViewCell.self, forCellWithReuseIdentifier: "SalesCollectionViewCell")
+        collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "CategoryCollectionViewCell")
+        collectionView.register(CatalogCollectionViewCell.self, forCellWithReuseIdentifier: "CatalogCollectionViewCell")
     }
     
     private func setDelegate(){
@@ -53,6 +58,10 @@ class ViewController: UIViewController {
         collectionView.delegate = self
     }
 
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        <#code#>
+    }
 
 }
 
@@ -117,10 +126,6 @@ extension ViewController {
             orderButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             orderButton.trailingAnchor.constraint(equalTo: view.trailingAnchor , constant:  -20),
             orderButton.heightAnchor.constraint(equalToConstant: 60)
-         
-        
-        
-        
         ])
         
     }

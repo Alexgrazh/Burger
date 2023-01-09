@@ -39,8 +39,45 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     }
     
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+        setConstaraints()
+    }
+
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    func setupView(){
+        backgroundColor = .white
+        addSubview(categoryTitle)
+        addSubview(categoryImageView)
+    }
+    
     func configureCellCategory(categoryName: String, imageName: String){
-        categoryImageView.image = UIImage(named: "")
-        categoryTitle.text = ""
+        categoryImageView.image = UIImage(named: imageName)
+        categoryTitle.text = categoryName
+    }
+    
+    func setConstaraints(){
+        NSLayoutConstraint.activate([
+            categoryTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
+            categoryTitle.trailingAnchor.constraint(equalTo: trailingAnchor , constant:  -5),
+            categoryTitle.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
+            categoryTitle.heightAnchor.constraint(equalToConstant: 15),
+            
+            
+            categoryImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
+            categoryImageView.trailingAnchor.constraint(equalTo: trailingAnchor , constant:  -5),
+            categoryImageView.bottomAnchor.constraint(equalTo: categoryTitle.topAnchor, constant: 0),
+            categoryImageView.topAnchor.constraint(equalTo: topAnchor, constant: 5)
+            
+            
+            
+        ])
+        
     }
 }
